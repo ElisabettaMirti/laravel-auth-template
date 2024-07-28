@@ -1,5 +1,8 @@
 <?php
 
+
+use App\Http\Controllers\HomeController as GuestHomeController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +22,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\GuestHomeController::class, 'index'])->name('home');
+
+// Route::get('admin/home', [App\Http\Controllers\AdminHomeController::class, 'index'])->name('admin.home');
+Route::middleware('auth')->name('admin.')->prefix('admin/')->group(function(){
+    }
+);
+
